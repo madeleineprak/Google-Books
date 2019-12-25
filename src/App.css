@@ -23,6 +23,7 @@
     background-color: white;
     margin: 0 auto;
     /* border-radius: 15px; */
+    position: relative;
 }
 
 .card-header {
@@ -30,6 +31,13 @@
 }
 .card-header-title {
   color: white;
+}
+
+.buttons {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 15px;
 }
 
 .field {

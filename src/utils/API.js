@@ -4,9 +4,12 @@ export default {
     getGoogleBooks: function(search) {
         return axios.get("https://www.googleapis.com/books/v1/volumes?q=" + search);
     },
-    getSavedBooks: function() {
+    getBooks: function() {
         return axios.get("/api/books/");
     },
+    // getSavedBooks: function() {
+    //     return axios.get("/api/books/");
+    // },
     deleteBook: function(id) {
         return axios.delete("/api/books/" + id);
     },

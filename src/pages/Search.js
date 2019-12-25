@@ -41,20 +41,35 @@ class Search extends Component {
             );
     };
 
+    handleSave = id => {
+        const book = this.state.books.find(book => book.id === id);
+        API.saveBook({
+            title: book.volumeInfo.title,
+            subtitle: book.volumeInfo.subtitle,
+            authors: book.volumeInfo.authors,
+            categories: book.volumeInfo.categories,
+            description: book.volumeInfo.description,
+            image: book.volumeInfo.imageLinks.thumbnail,
+            link: book.volumeInfo.infoLink,
+            googleId: book.id,
+        })
+        .then(() => this.getBooks());
+    }
+
     render() {
         return (
-            <div class="body-wrapper">
+            <div className="body-wrapper">
                 <Hero />
                 <Form search={this.state.search} handleInputChange={this.handleInputChange} handleUserInput={this.handleUserInput} />
 
-                <div class="card card-wrapper">
-                    <header class="card-header">
-                        <p class="card-header-title">
+                <div className="card card-wrapper">
+                    <header className="card-header">
+                        <p className="card-header-title">
                             Results
     </p>
                     </header>
                     {!this.state.books ? <h1 className="title">Sorry.. Try a different search</h1> : this.state.books.map(book => (
-                        <Card book={book} />
+                        <Card key={book.id} book={book} handleSave={this.handleSave}/>
                     ))}
                 </div>
 
